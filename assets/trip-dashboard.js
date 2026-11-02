@@ -29,7 +29,7 @@ $('td-plan-desc').textContent=before?'여행 시작까지 '+Math.ceil((utc(tripS
 $('td-plan-link').href=selected.file;
 $('td-tool-links').innerHTML='<a href="mobility-assistant.html">🚆 이동 도우미</a><a href="travel-assistant.html">🧭 현지 여행 비서</a>';
 const auroraDate=delta<3?'2026-11-24':delta>5?'2026-11-26':now;
-const auroraCity=before?'Helsinki':selected.city;
+const auroraCity=before?'헬싱키':after?'헬싱키':selected.city==='Helsinki'?'헬싱키':selected.city==='Rovaniemi'?'로바니에미':'사리셀카';
 $('td-aurora-title').textContent=auroraCity+' 오로라 관측 현황';
 $('td-aurora-desc').textContent=before?'여행 전 · 헬싱키 기준':after?'여행 종료 · 마지막 일정 지역 기준':'여행 중 · 오늘 일정 지역 기준';
 async function weather(lat,lon,date,target){
@@ -65,9 +65,9 @@ async function loadWeather(){
   const rows=kd.slice(1).filter(x=>x[0]&&Number.isFinite(Number(x[1])));
   const nowMs=Date.now();const kpRow=rows.find(x=>new Date(x[0]+'Z').getTime()>=nowMs-3*3600000)||rows[rows.length-1];
   const kp=kpRow?Number(kpRow[1]):null;
-  const score=cloud===null||kp===null?null:cloud<=30?(kp>=5?'높음':kp>=3?'보통':'낮음'):cloud<=60?(kp>=5?'보통':'낮음'):'낮음';
-  el.textContent=ap.city+' · 밤 구름량 '+(cloud===null?'—':cloud+'%')+' · KP '+(kp===null?'—':kp.toFixed(1))+' · 관측 여건 '+(score||'판단 중');
- }catch(e){el.textContent=ap.city+' · 오로라 관측 정보를 불러오지 못했어요.';}
+  const score=cloud===null?'—':cloud<=30?(kp!==null&&kp>=5?'높음':kp!==null&&kp>=3?'보통':'구름 양호'):cloud<=60?(kp!==null&&kp>=5?'보통':'낮음'):'낮음';
+  el.textContent=ap.city+' · 구름량 '+(cloud===null?'—':cloud+'%')+' · KP '+(kp===null?'자료 없음':kp.toFixed(1))+' · 관측 여건 '+score;
+ }catch(e){el.textContent=ap.city+' · 구름/KP 정보를 일시적으로 불러오지 못했어요.';}
 }
 $('td-refresh').addEventListener('click',loadWeather);
 loadWeather();
