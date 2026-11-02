@@ -1,0 +1,11 @@
+{
+  "name": "Finland Trip 2026",
+  "short_name": "Finland Trip",
+  "lang": "ko",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f3",
+  "theme_color": "#103d43",
+  "description": "핀란드 여행 일정, 숙소, 비용 및 현지 여행 도우미"
+}
