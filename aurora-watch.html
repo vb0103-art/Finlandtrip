@@ -34,4 +34,4 @@ async function load(){const p=places[selected];$('place-desc').textContent=p.des
 try{const r=await fetch('https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json');if(!r.ok)throw Error('kp');const rows=await r.json();const valid=rows.slice(1).filter(x=>x[0]&&x[1]&&Number.isFinite(Number(x[1])));const now=Date.now();let row=valid.find(x=>new Date(x[0]+'Z').getTime()>=now-3*3600000)||valid[valid.length-1];if(row){const k=Number(row[1]);$('kp').textContent=k.toFixed(1);$('kp-label').textContent=k>=5?'지자기 폭풍 수준':k>=3?'활동 증가':'낮은~보통 활동';}}catch(e){$('kp').textContent='—';$('kp-label').textContent='NOAA 자료 연결 실패';}}
 document.querySelectorAll('[data-place]').forEach(b=>{b.addEventListener('click',()=>{selected=b.dataset.place;manual=true;document.querySelectorAll('[data-place]').forEach(x=>x.classList.toggle('active',x===b));load()});b.classList.toggle('active',b.dataset.place===selected)});$('refresh').addEventListener('click',load);load();})();
 </script>
-<script src="assets/nordic.js?v=20261102-9"></script></body></html>
+<script src="assets/nordic.js?v=20261102-10"></script></body></html>
