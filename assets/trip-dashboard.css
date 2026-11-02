@@ -1,0 +1,28 @@
+/* Live Finland trip dashboard */
+.trip-dashboard{display:grid;gap:13px;margin:14px 0 18px}
+.td-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 23px;border-radius:22px;background:linear-gradient(120deg,#102f38,#176b5b 62%,#52658b);color:#fff;box-shadow:0 12px 28px rgba(16,57,59,.12)}
+.td-eyebrow{font-size:10px;letter-spacing:.17em;font-weight:850;color:rgba(255,255,255,.72)}
+.td-date{font-size:25px;font-weight:900;letter-spacing:-.04em;margin-top:5px}
+.td-place{font-size:13px;color:rgba(255,255,255,.82);margin-top:2px}
+.td-count{flex:0 0 auto;padding:8px 11px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.12);font-size:11px;font-weight:850}
+.td-weather{display:grid;grid-template-columns:1fr auto;gap:8px 14px;align-items:center;padding:17px 19px;border:1px solid #dcebe4;border-radius:19px;background:linear-gradient(115deg,#f0f7f3,#f4f5fa)}
+.td-weather-main{display:flex;align-items:center;gap:12px}.td-weather-icon{font-size:30px}.td-weather-label{font-size:12px;color:#61756d;font-weight:750}.td-temp{font-size:27px;line-height:1.2;font-weight:900;color:#173d39;letter-spacing:-.05em}
+.td-weather-meta{grid-column:1/-1;font-size:12px;color:#65756e}
+.td-refresh{grid-column:2;grid-row:1/2;border:1px solid #cfe0d8;border-radius:999px;background:#fff;color:#176b5b;padding:9px 12px;font-size:11px;font-weight:800}
+.td-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.td-card{min-width:0;padding:17px 18px;border:1px solid rgba(28,91,75,.11);border-radius:19px;background:#fff;box-shadow:0 6px 22px rgba(21,61,51,.045)}
+.td-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;letter-spacing:.08em;font-weight:900;color:#698078}
+.td-card-top span:last-child{letter-spacing:0;color:#23806c}
+.td-card h2{margin:12px 0 7px!important;font-size:18px!important;color:#173d39!important;display:block!important}
+.td-card h2:after{display:none!important}
+.td-card p{min-height:42px;margin:0 0 13px;color:#697770;font-size:12px;line-height:1.6}
+.td-action{display:inline-flex;align-items:center;gap:7px;color:#176b5b;text-decoration:none;font-size:12px;font-weight:900}
+.td-cloud{margin:-2px 0 12px;padding:9px 10px;border-radius:11px;background:#eff6f2;color:#276252;font-size:12px;font-weight:800}
+.td-tools .td-tool-links{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:13px}
+.td-tool-links a{display:flex;align-items:center;justify-content:center;min-height:54px;padding:8px 5px;border:1px solid #e4ece7;border-radius:12px;background:#fbfdfb;color:#315d50;text-decoration:none;text-align:center;font-size:11px;font-weight:800}
+.td-check-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}
+.td-check-list label{display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:11px;background:#f7f9f6;color:#42574e;font-size:12px;font-weight:700}
+.td-check-list input{width:17px;height:17px;accent-color:#197b68;flex:0 0 auto}
+.td-offline{display:flex;align-items:flex-start;gap:9px;padding:12px 14px;border:1px dashed #c8dcd2;border-radius:14px;background:#f6faf7;color:#63756d;font-size:11px;line-height:1.55}
+.td-offline b{color:#315d50}.td-offline-dot{width:8px;height:8px;margin-top:4px;border-radius:50%;background:#299879;flex:0 0 auto}
+@media(max-width:650px){.td-head{padding:19px 17px}.td-date{font-size:22px}.td-count{font-size:10px;padding:7px 9px}.td-grid{grid-template-columns:1fr}.td-card p{min-height:0}.td-tools .td-tool-links{grid-template-columns:repeat(2,1fr)}.td-check-list{grid-template-columns:1fr}.td-weather{padding:15px}.td-refresh{font-size:10px}}
