@@ -54,7 +54,7 @@ $('td-refresh').addEventListener('click',loadWeather);
 loadWeather();
 const checks=[...document.querySelectorAll('[data-trip-check]')],key='finland-trip-checklist-v1';
 try{const saved=JSON.parse(localStorage.getItem(key)||'{}');checks.forEach(c=>c.checked=!!saved[c.dataset.tripCheck]);}catch(e){}
-function progress(){const done=checks.filter(c=>c.checked).length;$('td-check-progress').textContent=done+'/'+checks.length+' 완료';}
+function progress(){const done=checks.filter(c=>c.checked).length;const el=$('td-check-progress');if(el)el.textContent=done+'/'+checks.length+' 완료';}
 checks.forEach(c=>c.addEventListener('change',()=>{const data={};checks.forEach(x=>data[x.dataset.tripCheck]=x.checked);try{localStorage.setItem(key,JSON.stringify(data));}catch(e){}progress();}));
 progress();
 if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').then(()=>{$('td-offline').innerHTML='<span class="td-offline-dot"></span><span><b>오프라인 여행 모드 준비 완료</b> · 이 페이지와 일정·숙소·비용 페이지는 방문 후 저장되어 인터넷이 끊겨도 다시 열 수 있습니다. 날씨·오로라 최신 예보는 인터넷이 필요합니다.</span>';}).catch(()=>{$('td-offline').innerHTML='<span class="td-offline-dot"></span><span><b>오프라인 저장 대기</b> · 페이지를 다시 열고 인터넷 연결 상태를 확인해 주세요.</span>';});
