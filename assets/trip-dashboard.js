@@ -33,21 +33,21 @@ $('td-aurora-title').textContent=before?'11/24–26 사리셀카 관측 준비':
 $('td-aurora-desc').textContent='관측 가능성은 구름량과 태양활동에 따라 달라집니다. 구름량은 참고 지표이며 오로라 출현을 보장하지 않습니다.';
 async function weather(lat,lon,date,target){
  const el=$(target);el.textContent='최신 예보 확인 중…';
- const url='https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,precipitation&daily=weather_code,temperature_2m_min,temperature_2m_max,precipitation_probability_max,wind_speed_10m_max&hourly=cloud_cover,apparent_temperature&timezone=Europe%2FHelsinki&forecast_days=16';
+ const url='https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,precipitation&daily=weather_code,temperature_2m_min,temperature_2m_max,precipitation_probability_max,precipitation_sum,wind_speed_10m_max&hourly=cloud_cover,apparent_temperature,precipitation_probability,precipitation&timezone=Europe%2FHelsinki&forecast_days=16';
  try{
   const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('weather unavailable');
   const d=await r.json();const i=d.daily.time.indexOf(date);
-  if(i<0){const q=d.current||{};if(Number.isFinite(q.temperature_2m)){return {current:true,temp:Math.round(q.temperature_2m),feels:Number.isFinite(q.apparent_temperature)?Math.round(q.apparent_temperature):null,wind:Math.round(q.wind_speed_10m||0),rain:q.precipitation};}el.textContent='해당 날짜 예보는 출발일이 가까워지면 확인할 수 있어요 (최대 16일 예보)';return null}
+  if(i<0){const q=d.current||{};if(Number.isFinite(q.temperature_2m)){const hi=d.hourly.time.findIndex(t=>new Date(t)>=new Date(Date.now()-30*60000));const hp=hi>=0?d.hourly.precipitation_probability?.[hi]:null;return {current:true,temp:Math.round(q.temperature_2m),feels:Number.isFinite(q.apparent_temperature)?Math.round(q.apparent_temperature):null,wind:Math.round(q.wind_speed_10m||0),rain:q.precipitation,prob:hp};}el.textContent='해당 날짜 예보는 출발일이 가까워지면 확인할 수 있어요 (최대 16일 예보)';return null}
   const min=Math.round(d.daily.temperature_2m_min[i]),max=Math.round(d.daily.temperature_2m_max[i]);
-  const rain=d.daily.precipitation_probability_max?.[i],wind=Math.round(d.daily.wind_speed_10m_max?.[i]||0);
+  const rain=d.daily.precipitation_probability_max?.[i],amount=d.daily.precipitation_sum?.[i],wind=Math.round(d.daily.wind_speed_10m_max?.[i]||0);
   const h=d.hourly.time.map((t,j)=>({t,v:d.hourly.cloud_cover[j]})).filter(x=>x.t.startsWith(date+'T')&&Number(x.t.slice(11,13))>=20&&Number(x.t.slice(11,13))<=23&&Number.isFinite(x.v));
   const cloud=h.length?Math.round(h.reduce((a,x)=>a+x.v,0)/h.length):null;
-  return {min,max,rain,wind,cloud};
+  return {min,max,rain,amount,wind,cloud};
  }catch(e){el.textContent='날씨 예보를 불러오지 못했어요. 인터넷 연결 후 다시 확인해 주세요.';return null}
 }
 async function loadWeather(){
  const w=await weather(selected.lat,selected.lon,before?tripStart:after?tripEnd:now,'td-weather-meta');
- if(w){$('td-weather-label').textContent=(w.current?'현재 날씨 · ':before?'여행 첫날 예보 · ':after?'마지막 날 기록 · ':'오늘의 예보 · ')+selected.city;$('td-temp').textContent=w.current?w.temp+'°':w.min+'° / '+w.max+'°';$('td-weather-icon').textContent='🌡️';$('td-weather-meta').textContent=w.current?'체감 '+(w.feels===null?'—':w.feels+'°')+' · 강수량 '+(w.rain??'—')+'mm · 풍속 '+w.wind+'km/h':'최저 '+w.min+'° · 최고 '+w.max+'° · 강수확률 '+(w.rain??'—')+'% · 최대풍속 '+w.wind+'km/h';}
+ if(w){$('td-weather-label').textContent=(w.current?'현재 날씨 · ':before?'여행 첫날 예보 · ':after?'마지막 날 기록 · ':'오늘의 예보 · ')+selected.city;$('td-temp').textContent=w.current?w.temp+'°':w.min+'° / '+w.max+'°';$('td-weather-icon').textContent='🌡️';$('td-weather-meta').textContent=w.current?'체감 '+(w.feels===null?'—':w.feels+'°')+' · 강수량 '+(w.rain??'—')+'mm · 강수확률 '+(w.prob??'—')+'% · 풍속 '+w.wind+'km/h':'최저 '+w.min+'° · 최고 '+w.max+'° · 예상 강수량 '+(w.amount??'—')+'mm · 강수확률 '+(w.rain??'—')+'% · 최대풍속 '+w.wind+'km/h';}
  const a=await weather(68.419,27.412,auroraDate,'td-cloud');
  if(a){$('td-cloud').textContent='11월 '+Number(auroraDate.slice(8,10))+'일 밤 구름량 '+(a.cloud===null?'정보 없음':a.cloud+'%')+' · 체감온도 '+a.min+'~'+a.max+'°C';}
 }
