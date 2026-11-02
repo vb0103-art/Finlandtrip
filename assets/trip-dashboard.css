@@ -85,6 +85,6 @@
 @media(max-width:650px){.td-agenda-date .td-date{font-size:21px!important}}
 
 /* Santa Claus Village snow + aurora hero artwork */
-.hero{background-image:linear-gradient(90deg,rgba(5,24,43,.58),rgba(5,24,43,.12)),url('santa-village-aurora.webp')!important;background-size:cover!important;background-position:center 48%!important;}
+.hero{background-image:linear-gradient(90deg,rgba(5,24,43,.58),rgba(5,24,43,.12)),url('../santa-village-aurora.webp')!important;background-size:cover!important;background-position:center 48%!important;}
 .hero:before{opacity:.24}
 .hero h1,.hero p{text-shadow:0 2px 12px rgba(0,0,0,.48)!important}
