@@ -20,13 +20,13 @@ const before=now<tripStart,after=now>tripEnd;
 if(before) selected=days[0];
 const dayNo=before?1:after?8:delta+1;
 const weatherDetail=$('td-weather-detail');if(weatherDetail)weatherDetail.href='https://www.windy.com/?'+selected.lat+','+selected.lon+',8';
-// 메인 대시보드는 특정 날짜의 일정 대신 8일 전체 여정을 항상 보여준다.
-$('td-date').textContent='11/21 – 11/28 · 8일';
-$('td-place').textContent='Helsinki → Rovaniemi → Saariselkä → Helsinki';
-$('td-count').textContent='8 DAYS';
-const dayLabel=$('td-day-label');if(dayLabel)dayLabel.textContent='8 DAYS';
-$('td-plan-desc').textContent='11/21 헬싱키 출발 · 11/22–23 로바니에미와 산타마을 · 11/24–26 사리셀카에서 허스키와 오로라 · 11/27–28 헬싱키 복귀 및 귀국';
-$('td-plan-link').href='#itinerary';
+// 메인 대시보드는 오늘 날짜에 맞는 일정과 상세 페이지를 보여준다.
+$('td-date').textContent=fmt(selected.date);
+$('td-place').textContent=selected.place;
+$('td-count').textContent='DAY '+dayNo;
+const dayLabel=$('td-day-label');if(dayLabel)dayLabel.textContent='DAY '+dayNo;
+$('td-plan-desc').textContent=selected.desc;
+$('td-plan-link').href=selected.file;
 $('td-tool-links').innerHTML='<a href="mobility-assistant.html">🚆 이동 도우미</a><a href="travel-assistant.html">🧭 현지 여행 비서</a>';
 const auroraDate=delta<3?'2026-11-24':delta>5?'2026-11-26':now;
 const auroraCity=before?'헬싱키':after?'헬싱키':selected.city==='Helsinki'?'헬싱키':selected.city==='Rovaniemi'?'로바니에미':'사리셀카';
