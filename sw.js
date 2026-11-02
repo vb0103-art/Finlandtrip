@@ -1,4 +1,4 @@
-const CACHE='finland-trip-v21';
+const CACHE='finland-trip-v22';
 const FILES=['./','./index.html','./day1.html','./day2.html','./day3.html','./day4.html','./day5.html','./day6.html','./day7.html','./day8.html','./accommodation-city.html','./accommodation.html','./costs.html','./finland_lapland_winter_activities.html','./vr_night_train.html','./assets/nordic.css','./assets/nordic.js','./assets/trip-dashboard.css','./assets/trip-dashboard.js','./assets/santa-village-aurora.webp','./manifest.json','./aurora-watch.html','./travel-assistant.html','./assets/travel-assistant.js','./mobility-assistant.html'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
