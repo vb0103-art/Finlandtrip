@@ -86,3 +86,39 @@ input,select,textarea{max-width:100%;border:1px solid #d7ddd4!important;border-r
  .nordic-bottom-nav{gap:2px;padding-left:7px;padding-right:7px}
 }
 @media(min-width:761px){body{padding-bottom:28px!important}.nordic-bottom-nav{left:50%;right:auto;bottom:16px;transform:translateX(-50%);width:min(550px,calc(100% - 40px));border:1px solid var(--nordic-line);border-radius:17px;padding:6px 9px;box-shadow:0 10px 30px rgba(32,61,50,.11)}}
+
+
+/* Aurora-inspired refinement */
+:root{--nordic-bg:#f4f6f3;--nordic-paper:#fff;--nordic-ink:#24342f;--nordic-muted:#77847e;--nordic-line:#e3eae5;--nordic-green:#176b5b;--nordic-green-dark:#173d39;--nordic-sage:#eaf3ef;--nordic-shadow:0 7px 26px rgba(24,55,49,.055)}
+body{background:radial-gradient(ellipse at 8% 5%,rgba(119,211,184,.10),transparent 28%),radial-gradient(ellipse at 95% 22%,rgba(147,157,219,.09),transparent 25%),var(--nordic-bg)!important}
+.hero{isolation:isolate;min-height:205px;background:linear-gradient(118deg,#071c2b 0%,#103d43 48%,#244b59 76%,#34365c 115%)!important;box-shadow:0 15px 36px rgba(8,32,42,.18)!important}
+.hero:before{content:"";position:absolute;z-index:-1;inset:-45% -15%;background:radial-gradient(ellipse at 30% 48%,rgba(75,225,174,.42),transparent 34%),radial-gradient(ellipse at 62% 44%,rgba(69,191,193,.34),transparent 32%),radial-gradient(ellipse at 80% 55%,rgba(151,124,221,.30),transparent 28%);filter:blur(20px);transform:rotate(-12deg);pointer-events:none}
+.hero:after{width:330px;height:330px;right:-150px;top:-180px;border-color:rgba(212,255,239,.20);box-shadow:0 0 0 32px rgba(160,255,226,.035),0 0 0 68px rgba(180,193,255,.035),0 0 0 108px rgba(255,255,255,.018)}
+.hero h1{letter-spacing:-.05em!important;text-shadow:0 2px 22px rgba(114,255,216,.16)}
+.hero p{max-width:680px}
+.chip{background:rgba(218,255,240,.10)!important;border-color:rgba(218,255,240,.20)!important;backdrop-filter:blur(8px)}
+.section,.city-accordion,.card,.day,.map-card,.mini,.pick{border-color:rgba(28,91,75,.10)!important;box-shadow:0 6px 22px rgba(21,61,51,.045)!important}
+h2,.section h2{display:flex;align-items:center;gap:9px}
+h2:after,.section h2:after{content:"";height:2px;flex:1;margin-left:5px;border-radius:9px;background:linear-gradient(90deg,rgba(49,164,132,.32),rgba(107,145,190,.05),transparent)}
+.routebox,.total,.transport{background:linear-gradient(120deg,#edf6f1,#f1f4f8)!important;border-color:#dcebe4!important}
+.badge{background:linear-gradient(110deg,#e3f4ed,#edf0fa)!important;color:#176353!important}
+.btn,.gmap{background:linear-gradient(115deg,#176b5b,#315d73)!important;border-color:transparent!important;box-shadow:0 4px 12px rgba(23,107,91,.12)!important}
+.btn.secondary,.gmap.secondary{background:#fff!important;color:#176b5b!important;border:1px solid #d1e4dc!important;box-shadow:none!important}
+.pin-no,.dot{background:#197b68!important}
+.time{color:#16705e!important}
+.nordic-bottom-nav{background:rgba(250,253,251,.94)!important;border-top-color:rgba(36,111,91,.14)!important;box-shadow:0 -7px 25px rgba(16,63,54,.08)!important}
+.nordic-bottom-nav a.active{background:linear-gradient(125deg,#e0f4eb,#e8edf8)!important;color:#124d43!important}
+.topbar{background:rgba(244,246,243,.91)!important}
+.nav{border-color:#dce8e1!important;color:#246456!important}
+.nav:active,.btn:active{transform:translateY(1px)}
+.stay-slot{border-color:#b8d9cb!important;background:#f0f8f4!important;color:#386b5d!important}
+.notice{background:#f7f5ed!important;border-color:#ebe5d4!important}
+@media(max-width:760px){
+ .hero{min-height:190px}
+ .hero:before{inset:-30% -40%;filter:blur(24px)}
+ .section{background:rgba(255,255,255,.94)!important}
+ .topbar{padding:8px 0 10px!important}
+ .nav{min-height:36px!important;padding:7px 12px!important;font-size:12px!important}
+ .nordic-bottom-nav a.active{border:1px solid rgba(38,127,103,.10)}
+}
+@media(prefers-reduced-motion:no-preference){.hero:before{animation:aurora-drift 18s ease-in-out infinite alternate}@keyframes aurora-drift{from{transform:translate3d(-2%,0,0) rotate(-12deg) scale(1)}to{transform:translate3d(3%,2%,0) rotate(-7deg) scale(1.08)}}}
