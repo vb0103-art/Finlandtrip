@@ -18,5 +18,5 @@
 <section class="section"><h2>➕ 앞으로 추가할 항목</h2><div class="notice">Saariselkä 숙소 · Rovaniemi→Saariselkä 이동 · 허스키 · 오로라 투어 · 얼음낚시 · 스키/썰매 · 공항셔틀 · 식비/공동장보기 등. 새 결제가 생기면 <b>내용 / 총액 / 통화 / 결제자</b>만 알려주면 2인 공통 기준으로 1인당 비용까지 계산해서 이 페이지에 추가하면 돼.</div></section>
 <div class="footer">2026 Finland Trip · shared expense tracker</div></div>
 <script>function won(n){return '₩'+Math.round(n).toLocaleString('ko-KR')}function calc(){const r=Number(document.getElementById('fx').value);const out=document.getElementById('fxResult');if(!r||r<=0){out.textContent='올바른 환율을 입력해줘.';return}localStorage.setItem('finlandFx',r);const total=6345103+(259*r);const each=3172551.5+(129.5*r);const owe=426906.5+(129.5*r);out.innerHTML='<b>현재 여행 총지출:</b> '+won(total)+'<br><b>1인당 현재 비용:</b> '+won(each)+'<br><b>현재 정산 기준:</b> 왕영 → 영은 약 '+won(owe)+'<br><span class="sub">※ 단순 환산값이며 실제 카드 청구금액과 수수료는 다를 수 있음.</span>'}window.addEventListener('DOMContentLoaded',()=>{const v=localStorage.getItem('finlandFx');if(v){document.getElementById('fx').value=v;calc()}})</script>
-<script src="assets/nordic.js?v=20261102-9"></script>
+<script src="assets/nordic.js?v=20261102-10"></script>
 </body></html>
