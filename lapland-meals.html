@@ -16,7 +16,7 @@
 .tip{background:#f3f5ef;border-radius:14px;padding:13px 15px;font-size:13px;color:#536357;margin-top:12px}
 @media(max-width:560px){.shop-table{font-size:13px}.shop-table th,.shop-table td{padding:8px 5px}}
 
-.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}.video-card{display:block;overflow:hidden;border:1px solid #e3e9df;border-radius:15px;background:#fff;color:inherit;text-decoration:none}.video-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#edf1e9}.video-card div{padding:11px 12px}.video-card b{display:block;color:#294d3c;font-size:14px}.video-card small{display:block;color:#738078;margin-top:4px;font-size:12px}.video-play{color:#b3261e;font-weight:900}
+.recipe-video{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:9px 12px;border-radius:10px;background:#fff1f0;color:#a32620;text-decoration:none;font-size:13px;font-weight:800;border:1px solid #f2d5d2}.recipe-video:hover{background:#ffe6e3}.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}.video-card{display:block;overflow:hidden;border:1px solid #e3e9df;border-radius:15px;background:#fff;color:inherit;text-decoration:none}.video-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#edf1e9}.video-card div{padding:11px 12px}.video-card b{display:block;color:#294d3c;font-size:14px}.video-card small{display:block;color:#738078;margin-top:4px;font-size:12px}.video-play{color:#b3261e;font-weight:900}
 </style>
 </head>
 <body><main class="wrap">
@@ -37,13 +37,6 @@
 <div class="tip">영업시간과 재고는 요일·시즌에 따라 달라질 수 있어요. 방문 당일 지도에서 영업 여부를 확인하고, 순록 고기는 보이면 먼저 구매하세요.</div>
 </section>
 
-<section class="meal-card" id="cooking-videos"><h2>🎥 요리 사진·영상으로 먼저 보기</h2><p class="meta">각 사진을 누르면 실제 조리 영상이 열려요. 재료 손질과 완성된 모양을 먼저 확인하고 따라 해보세요.</p><div class="video-grid">
-<a class="video-card" href="https://www.youtube.com/watch?v=L6XBICcXNkU" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/L6XBICcXNkU/hqdefault.jpg" alt="핀란드식 연어 크림 수프 로히케이토 영상 썸네일"><div><b>🍲 로히케이토 · 연어 크림 수프</b><small>Finlandia Diaries · 조리 과정 보기</small><small class="video-play">▶ 유튜브 영상 보기</small></div></a>
-<a class="video-card" href="https://www.youtube.com/watch?v=6Z7qSNHHiJY" target="_blank" rel="noopener"><img src="https://img.youtube.com/vi/6Z7qSNHHiJY/hqdefault.jpg" alt="핀란드식 순록 고기 볶음 포로카리스튀스 영상 썸네일"><div><b>🦌 포로카리스튀스 · 순록 고기 볶음</b><small>Pihvifriikki · 순록 고기 볶기와 감자 곁들이기</small><small class="video-play">▶ 유튜브 영상 보기</small></div></a>
-<a class="video-card" href="https://www.youtube.com/results?search_query=Finnish+makkarakastike+recipe" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800" alt="간단한 소시지 식사 사진"><div><b>🌭 막카라카스티케 · 소시지 크림소스</b><small>핀란드 가정식 조리 영상 모아보기</small><small class="video-play">▶ 유튜브 영상 검색</small></div></a>
-<a class="video-card" href="https://www.youtube.com/results?search_query=Karjalanpiirakka+egg+butter+Finnish+recipe" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=800" alt="핀란드식 파이와 비슷한 페이스트리 사진"><div><b>🥧 카르얄란피이라카 · 쌀죽 파이</b><small>달걀버터를 올리는 방법 영상 검색</small><small class="video-play">▶ 유튜브 영상 검색</small></div></a>
-</div><div class="tip">영상은 영어 설명일 수 있지만, 완성 사진과 조리 순서를 보면서 따라 하기 좋아요. 유튜브 검색 링크는 여러 조리법 중 원하는 영상을 고를 수 있어요.</div></section>
-
 <section class="meal-card">
 <h2>🍽️ 3박 추천 식단</h2>
 <p class="meta">숙소 도착일은 간단하게, 11/25는 허스키와 오로라 투어가 있어 조리 시간을 짧게 잡았어요.</p>
@@ -62,6 +55,7 @@
 <h3>만드는 법</h3>
 <ol class="steps"><li>감자·당근·양파를 한입 크기로 썰어요.</li><li>냄비에 버터를 녹여 양파를 1분 볶고 물이나 육수를 부어요.</li><li>감자와 당근을 넣고 10–12분 끓여요.</li><li>깍둑썰기한 연어와 크림을 넣고 약불에서 5–7분 익혀요.</li><li>소금·후추로 간하고 딜을 올리면 완성!</li></ol>
 <p class="meta">팁: 연어를 넣은 뒤 세게 끓이지 말고 살짝 익혀야 촉촉해요.</p>
+<a class="recipe-video" href="https://www.youtube.com/watch?v=L6XBICcXNkU" target="_blank" rel="noopener">▶ 로히케이토 조리 영상 보기</a>
 </section>
 
 <section class="meal-card">
@@ -73,6 +67,7 @@
 <h3>만드는 법</h3>
 <ol class="steps"><li>냉동 고기는 포장 안내에 따라 해동하거나 조리 가능 여부를 확인해요.</li><li>팬에 버터를 녹이고 순록 고기를 넣어 볶아요.</li><li>고기가 익으면 물을 조금 넣고 5–8분 더 끓여 부드럽게 해요.</li><li>소금·후추로 간하고 매시드 포테이토와 링곤베리 잼을 곁들여요.</li></ol>
 <p class="meta">팁: 순록 고기가 없으면 소고기 얇은 불고깃감으로 대체할 수 있지만, 현지식 맛은 순록 고기가 더 잘 살아요.</p>
+<a class="recipe-video" href="https://www.youtube.com/watch?v=6Z7qSNHHiJY" target="_blank" rel="noopener">▶ 포로카리스튀스 조리 영상 보기</a>
 </section>
 
 <section class="meal-card">
@@ -83,12 +78,13 @@
 <div class="ingredient">핀란드 소시지 3–4개, 양파 ½개, 버터 1큰술</div><div class="ingredient">밀가루 1큰술, 우유 200ml, 쿠킹크림 100ml</div><div class="ingredient">소금·후추, 머스터드 약간(선택), 매시드 포테이토</div>
 <h3>만드는 법</h3>
 <ol class="steps"><li>소시지와 양파를 먹기 좋게 썰어요.</li><li>팬에 버터를 녹여 양파와 소시지를 노릇하게 볶아요.</li><li>밀가루를 넣고 30초 볶은 뒤 우유와 크림을 조금씩 부어요.</li><li>약불에서 걸쭉해질 때까지 3–5분 저어요.</li><li>후추와 머스터드로 맛을 더하고 감자와 함께 내요.</li></ol>
+<a class="recipe-video" href="https://www.youtube.com/results?search_query=Finnish+makkarakastike+recipe" target="_blank" rel="noopener">▶ 막카라카스티케 조리 영상 보기</a>
 </section>
 
 <section class="meal-card">
 <h2>🥪 아침·점심은 5분 메뉴</h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px">
-<div style="background:#f3f5ef;border-radius:14px;padding:13px"><b>카르얄란피이라카</b><p class="meta">Karjalanpiirakka</p><p>핀란드식 쌀죽 파이. 포장 안내대로 데우고 삶은 달걀+버터를 으깨 올려요.</p></div>
+<div style="background:#f3f5ef;border-radius:14px;padding:13px"><b>카르얄란피이라카</b><p class="meta">Karjalanpiirakka</p><p>핀란드식 쌀죽 파이. 포장 안내대로 데우고 삶은 달걀+버터를 으깨 올려요.</p><a class="recipe-video" href="https://www.youtube.com/results?search_query=Karjalanpiirakka+egg+butter+Finnish+recipe" target="_blank" rel="noopener">▶ 쌀죽 파이·달걀버터 영상</a></div>
 <div style="background:#f3f5ef;border-radius:14px;padding:13px"><b>훈제연어 호밀빵</b><p class="meta">Ruisleipä + lohi</p><p>호밀빵에 버터, 훈제연어, 치즈, 오이를 얹으면 끝!</p></div>
 <div style="background:#f3f5ef;border-radius:14px;padding:13px"><b>베리 요거트</b><p class="meta">Mustikka / puolukka</p><p>요거트에 블루베리나 링곤베리, 그래놀라를 넣어 먹어요.</p></div>
 </div>
