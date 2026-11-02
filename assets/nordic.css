@@ -122,3 +122,24 @@ h2:after,.section h2:after{content:"";height:2px;flex:1;margin-left:5px;border-r
  .nordic-bottom-nav a.active{border:1px solid rgba(38,127,103,.10)}
 }
 @media(prefers-reduced-motion:no-preference){.hero:before{animation:aurora-drift 18s ease-in-out infinite alternate}@keyframes aurora-drift{from{transform:translate3d(-2%,0,0) rotate(-12deg) scale(1)}to{transform:translate3d(3%,2%,0) rotate(-7deg) scale(1.08)}}}
+
+
+/* Daily itinerary: clearer chronological timeline */
+.timeline{margin:8px 0 2px 2px!important;padding:2px 0 2px 0!important}
+.timeline .stop{grid-template-columns:82px 18px minmax(0,1fr)!important;gap:10px!important;padding:0 0 17px!important;align-items:start!important}
+.timeline .time{padding:3px 0 0!important;color:#52685b!important;font-size:13px!important;font-weight:800!important;line-height:1.45!important;letter-spacing:-.01em}
+.timeline .dot{width:12px!important;height:12px!important;margin:7px 0 0 2px!important;background:#527b62!important;box-shadow:0 0 0 4px #edf2eb!important;z-index:1}
+.timeline .stop:not(:last-child) .dot:after{left:5px!important;top:12px!important;width:2px!important;height:calc(100% + 19px)!important;background:#dce5dc!important}
+.timeline .stop .card{padding:14px 16px!important;border:1px solid #e7eae2!important;border-radius:15px!important;background:#fffefa!important;box-shadow:0 3px 12px rgba(35,54,43,.035)!important;min-width:0}
+.timeline .stop .card b{font-size:15px!important;line-height:1.45!important;color:#294a39!important;margin-bottom:5px!important}
+.timeline .stop .card .sub{font-size:13px!important;line-height:1.6!important;color:#737d74!important}
+.timeline .stop .card .transport{background:#f3f5ef!important;border-radius:10px!important;line-height:1.55!important}
+@media(max-width:650px){
+ .timeline{margin-left:0!important}
+ .timeline .stop{grid-template-columns:58px 14px minmax(0,1fr)!important;gap:8px!important;padding-bottom:14px!important}
+ .timeline .time{font-size:11px!important;overflow-wrap:anywhere}
+ .timeline .dot{width:10px!important;height:10px!important;margin:7px 0 0 2px!important;box-shadow:0 0 0 3px #edf2eb!important}
+ .timeline .stop:not(:last-child) .dot:after{left:4px!important;top:10px!important;height:calc(100% + 16px)!important}
+ .timeline .stop .card{padding:12px!important;border-radius:13px!important}
+ .timeline .stop .card b{font-size:14px!important}
+}
