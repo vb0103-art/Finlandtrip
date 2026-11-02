@@ -23,10 +23,10 @@ $('td-date').textContent=fmt(before?tripStart:after?tripEnd:now);
 $('td-place').textContent=before?'출발 준비 중 · 첫 목적지 Helsinki':after?'여행 일정 보관 · Finland':selected.place;
 $('td-count').textContent=before?'출발 D-'+Math.ceil((utc(tripStart)-utc(now))/86400000):after?'TRIP COMPLETE':'DAY '+dayNo+' / 8';
 $('td-day-label').textContent='DAY '+dayNo;
-$('td-plan-title').textContent=before?'출발 준비 · 헬싱키 도착':after?'여행 기록 다시 보기':selected.title;
+
 $('td-plan-desc').textContent=before?'여행 시작까지 '+Math.ceil((utc(tripStart)-utc(now))/86400000)+'일 남았어요. 첫날 일정과 예약 정보를 미리 확인하세요.':after?'여행이 끝났어요. 날짜를 기준으로 해당 일정을 다시 확인할 수 있습니다.':selected.desc;
 $('td-plan-link').href=selected.file;
-$('td-tool-links').innerHTML='<a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(selected.city+' Finland')+'" target="_blank" rel="noopener">🗺️ 주변 지도</a><a href="day5.html">🐕 예약·픽업</a><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('pharmacy '+selected.city+' Finland')+'" target="_blank" rel="noopener">💊 약국 찾기</a><a href="mobility-assistant.html">🚆 이동 도우미</a><a href="travel-assistant.html">🧭 현지 여행 비서</a><a href="tel:112">🆘 긴급전화 112</a>';
+$('td-tool-links').innerHTML='<a href="mobility-assistant.html">🚆 이동 도우미</a><a href="travel-assistant.html">🧭 현지 여행 비서</a>';
 const auroraDate=delta<3?'2026-11-24':delta>5?'2026-11-26':now;
 $('td-aurora-title').textContent=before?'11/24–26 사리셀카 관측 준비':'사리셀카 오로라 관측';
 $('td-aurora-desc').textContent='관측 가능성은 구름량과 태양활동에 따라 달라집니다. 구름량은 참고 지표이며 오로라 출현을 보장하지 않습니다.';
