@@ -26,3 +26,39 @@
 .td-offline{display:flex;align-items:flex-start;gap:9px;padding:12px 14px;border:1px dashed #c8dcd2;border-radius:14px;background:#f6faf7;color:#63756d;font-size:11px;line-height:1.55}
 .td-offline b{color:#315d50}.td-offline-dot{width:8px;height:8px;margin-top:4px;border-radius:50%;background:#299879;flex:0 0 auto}
 @media(max-width:650px){.td-head{padding:19px 17px}.td-date{font-size:22px}.td-count{font-size:10px;padding:7px 9px}.td-grid{grid-template-columns:1fr}.td-card p{min-height:0}.td-tools .td-tool-links{grid-template-columns:repeat(2,1fr)}.td-check-list{grid-template-columns:1fr}.td-weather{padding:15px}.td-refresh{font-size:10px}}
+
+
+/* Main page: glanceable, mobile-first layout */
+.topbar{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:none;padding:8px 0 11px;overscroll-behavior-x:contain}
+.topbar::-webkit-scrollbar{display:none}
+.topbar .nav{flex:0 0 auto;padding:9px 13px;font-size:13px}
+.hero{padding:21px 23px;margin:7px 0 12px;border-radius:20px}
+.hero h1{font-size:25px;letter-spacing:-.04em}
+.hero p{font-size:13px;line-height:1.5}
+.hero .chips{display:none}
+.trip-dashboard{display:flex;flex-direction:column;gap:10px;margin:12px 0 17px}
+.td-head{order:0;padding:20px 21px;border-radius:20px}
+.td-weather{order:1}
+.td-grid{display:contents}
+.td-agenda{order:2;border-color:#d8e9e0;background:linear-gradient(135deg,#fff 0%,#f4faf6 100%)}
+.td-tools{order:3}
+.td-aurora{order:4}
+.td-offline{order:5}
+.td-agenda h2{font-size:21px!important}
+.td-agenda p{font-size:13px;min-height:0}
+.td-card{padding:17px 18px}
+.td-tools .td-tool-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.td-tool-links a{min-height:58px;padding:9px 7px;font-size:12px;line-height:1.35}
+.trip-dashboard .td-card-top{font-size:10px}
+@media(max-width:650px){
+ .wrap{padding:10px 12px 42px}
+ .hero{padding:18px 17px}
+ .hero h1{font-size:22px}
+ .hero p{font-size:12px}
+ .td-head{padding:18px 16px}
+ .td-date{font-size:22px}
+ .td-weather{grid-template-columns:1fr auto}
+ .td-tools .td-tool-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .td-tool-links a{min-height:54px}
+ .td-agenda h2{font-size:20px!important}
+}
