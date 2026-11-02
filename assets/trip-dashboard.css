@@ -88,3 +88,5 @@
 .hero{background-image:linear-gradient(90deg,rgba(5,24,43,.58),rgba(5,24,43,.12)),url('santa-village-aurora.webp')!important;background-size:cover!important;background-position:center 48%!important;}
 .hero:before{opacity:.24}
 .hero h1,.hero p{text-shadow:0 2px 12px rgba(0,0,0,.48)!important}
+
+.td-weather-detail{grid-column:1/-1;justify-self:start;color:#176b5b;text-decoration:none;font-size:12px;font-weight:900;padding-top:1px}.td-weather-detail:after{content:' · Windy 실시간 지도/예보'}
