@@ -83,3 +83,8 @@
 .td-agenda-date .td-place{margin-top:3px;font-size:12px;color:#748078}
 .td-agenda .td-card-top .td-count{padding:6px 9px;font-size:10px}
 @media(max-width:650px){.td-agenda-date .td-date{font-size:21px!important}}
+
+/* Santa Claus Village snow + aurora hero artwork */
+.hero{background-image:linear-gradient(90deg,rgba(5,24,43,.58),rgba(5,24,43,.12)),url('santa-village-aurora.webp')!important;background-size:cover!important;background-position:center 48%!important;}
+.hero:before{opacity:.24}
+.hero h1,.hero p{text-shadow:0 2px 12px rgba(0,0,0,.48)!important}
