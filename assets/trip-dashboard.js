@@ -19,6 +19,7 @@ let selected=days[Math.max(0,Math.min(7,delta))];
 const before=now<tripStart,after=now>tripEnd;
 if(before) selected=days[0];
 const dayNo=before?1:after?8:delta+1;
+const weatherDetail=$('td-weather-detail');if(weatherDetail)weatherDetail.href='https://www.windy.com/?'+selected.lat+','+selected.lon+',8';
 $('td-date').textContent=fmt(before?tripStart:after?tripEnd:now);
 $('td-place').textContent=before?'출발 준비 중 · 첫 목적지 Helsinki':after?'여행 일정 보관 · Finland':selected.place;
 $('td-count').textContent=before?'출발 D-'+Math.ceil((utc(tripStart)-utc(now))/86400000):after?'TRIP COMPLETE':'DAY '+dayNo+' / 8';
