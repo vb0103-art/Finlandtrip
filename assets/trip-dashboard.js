@@ -29,8 +29,9 @@ $('td-plan-desc').textContent=before?'여행 시작까지 '+Math.ceil((utc(tripS
 $('td-plan-link').href=selected.file;
 $('td-tool-links').innerHTML='<a href="mobility-assistant.html">🚆 이동 도우미</a><a href="travel-assistant.html">🧭 현지 여행 비서</a>';
 const auroraDate=delta<3?'2026-11-24':delta>5?'2026-11-26':now;
-$('td-aurora-title').textContent=before?'11/24–26 사리셀카 관측 준비':'사리셀카 오로라 관측';
-$('td-aurora-desc').textContent='관측 가능성은 구름량과 태양활동에 따라 달라집니다. 구름량은 참고 지표이며 오로라 출현을 보장하지 않습니다.';
+const auroraCity=before?'Helsinki':selected.city;
+$('td-aurora-title').textContent=auroraCity+' 오로라 관측 현황';
+$('td-aurora-desc').textContent=before?'여행 전 · 헬싱키 기준':after?'여행 종료 · 마지막 일정 지역 기준':'여행 중 · 오늘 일정 지역 기준';
 async function weather(lat,lon,date,target){
  const el=$(target);el.textContent='최신 예보 확인 중…';
  const url='https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,precipitation&daily=weather_code,temperature_2m_min,temperature_2m_max,precipitation_probability_max,precipitation_sum,wind_speed_10m_max&hourly=cloud_cover,apparent_temperature,precipitation_probability,precipitation&timezone=Europe%2FHelsinki&forecast_days=16';
@@ -48,8 +49,25 @@ async function weather(lat,lon,date,target){
 async function loadWeather(){
  const w=await weather(selected.lat,selected.lon,before?tripStart:after?tripEnd:now,'td-weather-meta');
  if(w){$('td-weather-label').textContent=(w.current?'현재 날씨 · ':before?'여행 첫날 예보 · ':after?'마지막 날 기록 · ':'오늘의 예보 · ')+selected.city;$('td-temp').textContent=w.current?w.temp+'°':w.min+'° / '+w.max+'°';$('td-weather-icon').textContent='🌡️';$('td-weather-meta').textContent=w.current?'체감 '+(w.feels===null?'—':w.feels+'°')+' · 강수량 '+(w.rain??'—')+'mm · 강수확률 '+(w.prob??'—')+'% · 풍속 '+w.wind+'km/h':'최저 '+w.min+'° · 최고 '+w.max+'° · 예상 강수량 '+(w.amount??'—')+'mm · 강수확률 '+(w.rain??'—')+'% · 최대풍속 '+w.wind+'km/h';}
- const a=await weather(68.419,27.412,auroraDate,'td-cloud');
- if(a){$('td-cloud').textContent='11월 '+Number(auroraDate.slice(8,10))+'일 밤 구름량 '+(a.cloud===null?'정보 없음':a.cloud+'%')+' · 체감온도 '+a.min+'~'+a.max+'°C';}
+ const ap=before?{city:'Helsinki',lat:60.1699,lon:24.9384}:selected;
+ const el=$('td-cloud');el.textContent=ap.city+' 기준 관측 조건 확인 중…';
+ try{
+  const u='https://api.open-meteo.com/v1/forecast?latitude='+ap.lat+'&longitude='+ap.lon+'&hourly=cloud_cover&forecast_days=2&timezone=Europe%2FHelsinki';
+  const [wr,kr]=await Promise.all([fetch(u,{cache:'no-store'}),fetch('https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json',{cache:'no-store'})]);
+  if(!wr.ok||!kr.ok)throw Error('aurora');
+  const [wd,kd]=await Promise.all([wr.json(),kr.json()]);
+  const local=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Helsinki',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
+  const part=k=>local.find(x=>x.type===k)?.value;
+  const day=part('year')+'-'+part('month')+'-'+part('day');
+  let hs=wd.hourly.time.map((t,i)=>({t,v:wd.hourly.cloud_cover[i]})).filter(x=>x.t.startsWith(day+'T')&&Number(x.t.slice(11,13))>=21&&Number(x.t.slice(11,13))<=23);
+  if(!hs.length)hs=wd.hourly.time.map((t,i)=>({t,v:wd.hourly.cloud_cover[i]})).filter(x=>Number.isFinite(x.v)).slice(0,3);
+  const cloud=hs.length?Math.round(hs.reduce((n,x)=>n+x.v,0)/hs.length):null;
+  const rows=kd.slice(1).filter(x=>x[0]&&Number.isFinite(Number(x[1])));
+  const nowMs=Date.now();const kpRow=rows.find(x=>new Date(x[0]+'Z').getTime()>=nowMs-3*3600000)||rows[rows.length-1];
+  const kp=kpRow?Number(kpRow[1]):null;
+  const score=cloud===null||kp===null?null:cloud<=30?(kp>=5?'높음':kp>=3?'보통':'낮음'):cloud<=60?(kp>=5?'보통':'낮음'):'낮음';
+  el.textContent=ap.city+' · 밤 구름량 '+(cloud===null?'—':cloud+'%')+' · KP '+(kp===null?'—':kp.toFixed(1))+' · 관측 여건 '+(score||'판단 중');
+ }catch(e){el.textContent=ap.city+' · 오로라 관측 정보를 불러오지 못했어요.';}
 }
 $('td-refresh').addEventListener('click',loadWeather);
 loadWeather();
